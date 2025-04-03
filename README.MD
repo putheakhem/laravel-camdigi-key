@@ -1,0 +1,110 @@
+# Laravel CamDigiKey Package
+
+A Laravel wrapper for the [CamDigiKey Node.js Client](https://github.com/Techo-Startup-Center/camdigikey-client-library-node).
+
+This package integrates Cambodia’s national digital identity authentication (CamDigiKey) system with your Laravel application via Node.js.
+
+---
+
+## 📦 Installation
+
+You can install the package via [Packagist](https://packagist.org/packages/putheakhem/laravel-camdigi-key):
+
+```bash
+composer require putheakhem/laravel-camdigi-key
+```
+
+---
+
+## ⚙️ Setup
+
+After installation:
+
+```bash
+php artisan vendor:publish --tag=config
+```
+This will publish the `config/camdigikey.php` file.
+
+Run `php artisan camdigikey:setup`. The package also automatically clones the Node.js SDK into:
+
+```
+vendor/putheakhem/laravel-camdigi-key/node-lib/
+```
+
+---
+
+## 🌐 .env Configuration
+
+Set your CamDigiKey credentials in `.env`:
+
+```env
+CAMDIGIKEY_CLIENT_ID=your_client_id
+CAMDIGIKEY_HMAC_KEY=your_hmac_key
+CAMDIGIKEY_AES_SECRET_KEY=your_aes_secret
+CAMDIGIKEY_AES_IV_PARAMS=your_iv
+CAMDIGIKEY_CLIENT_DOMAIN=https://your-app.test
+CAMDIGIKEY_SERVER_BASED_URL=https://camdigikey.serveo.net
+CAMDIGIKEY_CLIENT_KEYSTORE_FILE=storage/app/camdigi-key/client_keystore.p12
+CAMDIGIKEY_CLIENT_KEYSTORE_FILE_PASSWORD=your_password
+CAMDIGIKEY_CLIENT_TRUST_STORE_FILE=storage/app/camdigi-key/trust_keystore.p12
+CAMDIGIKEY_CLIENT_TRUST_STORE_FILE_PASSWORD=your_password
+CAMDIGIKEY_REDIRECT_URI=https://your-app.test/callback
+```
+
+> ✅ Store `.p12` files securely in `storage/app/camdigi-key/`
+
+---
+
+## 🧪 Usage
+
+Example route to get a login token:
+
+```php
+Route::get('/camdigikey/login-token', function () {
+    return CamDigiKey::getLoginToken();
+});
+```
+
+Or in a controller:
+
+```php
+$token = CamDigiKey::getLoginToken();
+$access = CamDigiKey::getUserAccessToken($authToken);
+```
+
+All supported methods:
+- `getLoginToken()`
+- `getUserAccessToken($authToken)`
+- `refreshUserAccessToken($accessToken)`
+- `logoutAccessToken($accessToken)`
+- `validateJwt($accessToken)`
+- `lookupUserProfile($accessToken, $personalCode)`
+- `verifyAccountToken($accountToken)`
+- `getOrganizationAccessToken()`
+- `getUserFace($accessToken)`
+
+---
+
+## 🧹 Artisan Setup Command (Optional)
+
+Automatically run during install:
+```bash
+php artisan camdigikey:setup
+```
+This clones the CamDigiKey Node.js SDK into the expected path.
+
+---
+
+## 🔐 Security
+- Never expose `.p12` files in public directories
+- `.gitignore` all private keystores
+
+---
+
+## 📄 License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
+---
+
+Built with ❤️ by [Puthea khem](mailto:puthea.khem@gmail.com)
