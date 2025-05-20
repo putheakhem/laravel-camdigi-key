@@ -1,3 +1,6 @@
+[![Latest Stable Version](https://img.shields.io/packagist/v/putheakhem/laravel-camdigi-key.svg?style=flat-square)](https://packagist.org/packages/putheakhem/laravel-camdigi-key)
+[![Total Downloads](https://img.shields.io/packagist/dt/putheakhem/laravel-camdigi-key.svg?style=flat-square)](https://packagist.org/packages/putheakhem/laravel-camdigi-key)
+
 # Laravel CamDigiKey Package
 
 A Laravel wrapper for the [CamDigiKey Node.js Client](https://github.com/Techo-Startup-Center/camdigikey-client-library-node).
@@ -98,8 +101,14 @@ This clones the CamDigiKey Node.js SDK into the expected path.
 ## 🔐 Security
 - Never expose `.p12` files in public directories
 - `.gitignore` all private keystores
+- If you discover any security issues, please email puthea.khem at gmail.com instead of using the issue tracker.
 
 ---
+
+## Support Me
+
+If you find this package useful, consider supporting my work:
+- [Buy me a coffee](https://www.buymeacoffee.com/iamputhea)
 
 ## 📄 License
 
