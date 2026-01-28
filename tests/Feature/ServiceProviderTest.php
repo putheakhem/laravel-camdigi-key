@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Artisan;
 use PutheaKhem\LaravelCamdigiKey\CamDigiKey;
-use PutheaKhem\LaravelCamdigiKey\Console\SetupCamDigiKey;
 use PutheaKhem\LaravelCamdigiKey\Facades\CamDigiKey as CamDigiKeyFacade;
 
 it('registers the service provider', function () {
@@ -41,7 +39,7 @@ it('merges configuration', function () {
 
 it('service provider registers commands', function () {
     $provider = app()->getProvider('PutheaKhem\\LaravelCamdigiKey\\CamDigiKeyServiceProvider');
-    
+
     expect($provider)->not->toBeNull();
 });
 

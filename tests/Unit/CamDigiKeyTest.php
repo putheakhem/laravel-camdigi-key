@@ -40,7 +40,7 @@ it('getLoginToken returns array when successful', function () {
 it('getUserAccessToken accepts string parameter', function () {
     $reflection = new ReflectionMethod($this->camDigiKey, 'getUserAccessToken');
     $params = $reflection->getParameters();
-    
+
     expect($params)->toHaveCount(1)
         ->and($params[0]->getName())->toBe('authToken')
         ->and($params[0]->getType()->getName())->toBe('string');
@@ -49,7 +49,7 @@ it('getUserAccessToken accepts string parameter', function () {
 it('validateJwt accepts string parameter', function () {
     $reflection = new ReflectionMethod($this->camDigiKey, 'validateJwt');
     $params = $reflection->getParameters();
-    
+
     expect($params)->toHaveCount(1)
         ->and($params[0]->getName())->toBe('token')
         ->and($params[0]->getType()->getName())->toBe('string');
@@ -58,7 +58,7 @@ it('validateJwt accepts string parameter', function () {
 it('refreshAccessToken accepts string parameter', function () {
     $reflection = new ReflectionMethod($this->camDigiKey, 'refreshAccessToken');
     $params = $reflection->getParameters();
-    
+
     expect($params)->toHaveCount(1)
         ->and($params[0]->getName())->toBe('accessToken')
         ->and($params[0]->getType()->getName())->toBe('string');
@@ -67,7 +67,7 @@ it('refreshAccessToken accepts string parameter', function () {
 it('logoutAccessToken accepts string parameter', function () {
     $reflection = new ReflectionMethod($this->camDigiKey, 'logoutAccessToken');
     $params = $reflection->getParameters();
-    
+
     expect($params)->toHaveCount(1)
         ->and($params[0]->getName())->toBe('accessToken')
         ->and($params[0]->getType()->getName())->toBe('string');
@@ -76,14 +76,14 @@ it('logoutAccessToken accepts string parameter', function () {
 it('getOrganizationAccessToken has no parameters', function () {
     $reflection = new ReflectionMethod($this->camDigiKey, 'getOrganizationAccessToken');
     $params = $reflection->getParameters();
-    
+
     expect($params)->toHaveCount(0);
 });
 
 it('lookupUserProfile accepts two string parameters', function () {
     $reflection = new ReflectionMethod($this->camDigiKey, 'lookupUserProfile');
     $params = $reflection->getParameters();
-    
+
     expect($params)->toHaveCount(2)
         ->and($params[0]->getName())->toBe('accessToken')
         ->and($params[0]->getType()->getName())->toBe('string')
@@ -94,7 +94,7 @@ it('lookupUserProfile accepts two string parameters', function () {
 it('getUserFace accepts string parameter', function () {
     $reflection = new ReflectionMethod($this->camDigiKey, 'getUserFace');
     $params = $reflection->getParameters();
-    
+
     expect($params)->toHaveCount(1)
         ->and($params[0]->getName())->toBe('token')
         ->and($params[0]->getType()->getName())->toBe('string');
@@ -103,7 +103,7 @@ it('getUserFace accepts string parameter', function () {
 it('verifyAccountToken accepts string parameter', function () {
     $reflection = new ReflectionMethod($this->camDigiKey, 'verifyAccountToken');
     $params = $reflection->getParameters();
-    
+
     expect($params)->toHaveCount(1)
         ->and($params[0]->getName())->toBe('accountToken')
         ->and($params[0]->getType()->getName())->toBe('string');
@@ -125,8 +125,7 @@ it('all methods return array type', function () {
     foreach ($methods as $method) {
         $reflection = new ReflectionMethod($this->camDigiKey, $method);
         $returnType = $reflection->getReturnType();
-        
+
         expect($returnType->getName())->toBe('array');
     }
 });
-

@@ -7,9 +7,6 @@ declare(strict_types=1);
 
 it('command exists in source code', function () {
     $commandFile = __DIR__.'/../../src/Console/SetupCamDigiKey.php';
-    
+
     expect(file_exists($commandFile))->toBeTrue();
 });
-
-
-
