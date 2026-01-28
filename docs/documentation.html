@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Laravel CamDigiKey | API Reference & Usage Guide</title>
+    <meta name="description" content="Complete documentation for Laravel CamDigiKey package. Learn how to integrate Cambodia's digital identity authentication with detailed examples and API reference.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        pre code.hljs {
+            background: transparent;
+            padding: 0;
+        }
+
+        pre {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .prose h2 {
+            scroll-margin-top: 80px;
+        }
+
+        .prose h3 {
+            scroll-margin-top: 80px;
+        }
+
+        .sidebar-link {
+            transition: all 0.2s;
+        }
+
+        .sidebar-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+            border-left-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">Laravel CamDigiKey</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Home</a>
+                    <a href="#" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium font-semibold">Documentation</a>
+                    <a href="https://github.com/putheakhem/laravel-camdigi-key" target="_blank" rel="noopener" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar -->
+            <aside class="lg:w-64 flex-shrink-0">
+                <div class="sticky top-24">
+                    <nav class="space-y-1">
+                        <a href="#introduction" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Introduction</a>
+                        <a href="#installation" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Installation</a>
+                        <a href="#configuration" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Configuration</a>
+                        <a href="#basic-usage" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Basic Usage</a>
+                        <a href="#authentication" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Authentication</a>
+                        <a href="#user-management" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">User Management</a>
+                        <a href="#organization" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Organization</a>
+                        <a href="#api-reference" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">API Reference</a>
+                        <a href="#error-handling" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Error Handling</a>
+                        <a href="#security" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Security</a>
+                        <a href="#troubleshooting" class="sidebar-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md border-l-4 border-transparent">Troubleshooting</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1 max-w-4xl">
+                <div class="prose prose-lg max-w-none">
+                    <!-- Introduction -->
+                    <section id="introduction" class="mb-16">
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Documentation</h1>
+                        <p class="text-xl text-gray-600 mb-6">Complete guide to integrating CamDigiKey authentication in your Laravel application.</p>
+                        
+                        <div class="bg-white border-l-4 border-orange-400 px-4 py-3 mb-6 rounded-r">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <p class="text-sm text-gray-700">
+                                    <span class="font-semibold text-gray-900">Note:</span> This is an unofficial community package, not affiliated with the official CamDigiKey Platform.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6">
+                            <h3 class="text-lg font-semibold text-blue-900 mb-2">What is CamDigiKey?</h3>
+                            <p class="text-blue-800">CamDigiKey is Cambodia's national digital identity authentication system that enables secure, government-backed user verification and authentication for applications.</p>
+                        </div>
+
+                        <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Features</h2>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>OAuth2-based authentication flow</li>
+                            <li>Digital certificate integration</li>
+                            <li>User profile lookup and verification</li>
+                            <li>Biometric data access (face recognition)</li>
+                            <li>Token lifecycle management (refresh, validate, logout)</li>
+                            <li>Organization account support</li>
+                            <li>HMAC and AES encryption</li>
+                        </ul>
+                    </section>
+
+                    <!-- Installation -->
+                    <section id="installation" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Installation</h2>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Requirements</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                            <li>PHP 8.1 or higher</li>
+                            <li>Laravel 10.x or 11.x</li>
+                            <li>Node.js 18+ (for CamDigiKey SDK)</li>
+                            <li>Composer</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Step 1: Install Package</h3>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-bash">composer require putheakhem/laravel-camdigi-key</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Step 2: Publish Configuration</h3>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-bash">php artisan vendor:publish --tag=config</code></pre>
+                        </div>
+                        <p class="text-gray-700 mb-6">This publishes the configuration file to <code class="bg-gray-100 px-2 py-1 rounded">config/camdigikey.php</code></p>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Step 3: Run Setup</h3>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-bash">php artisan camdigikey:setup</code></pre>
+                        </div>
+                        <p class="text-gray-700">This command automatically clones the CamDigiKey Node.js SDK into your vendor directory.</p>
+                    </section>
+
+                    <!-- Configuration -->
+                    <section id="configuration" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Configuration</h2>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Environment Variables</h3>
+                        <p class="text-gray-700 mb-4">Add the following to your <code class="bg-gray-100 px-2 py-1 rounded">.env</code> file:</p>
+                        
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-bash">CAMDIGIKEY_CLIENT_ID=your_client_id
+CAMDIGIKEY_HMAC_KEY=your_hmac_key
+CAMDIGIKEY_AES_SECRET_KEY=your_aes_secret_key
+CAMDIGIKEY_AES_IV_PARAMS=your_iv_params
+CAMDIGIKEY_CLIENT_DOMAIN=https://your-app.test
+CAMDIGIKEY_SERVER_BASED_URL=https://camdigikey.serveo.net
+CAMDIGIKEY_CLIENT_KEYSTORE_FILE=storage/app/camdigi-key/client_keystore.p12
+CAMDIGIKEY_CLIENT_KEYSTORE_FILE_PASSWORD=your_password
+CAMDIGIKEY_CLIENT_TRUST_STORE_FILE=storage/app/camdigi-key/trust_keystore.p12
+CAMDIGIKEY_CLIENT_TRUST_STORE_FILE_PASSWORD=your_password
+CAMDIGIKEY_REDIRECT_URI=https://your-app.test/callback</code></pre>
+                        </div>
+
+                        <div class="bg-yellow-50 border-l-4 border-yellow-600 p-4 my-6">
+                            <h4 class="text-lg font-semibold text-yellow-900 mb-2">⚠️ Security Notice</h4>
+                            <p class="text-yellow-800">Store your <code>.p12</code> keystore files securely in <code>storage/app/camdigi-key/</code> and never commit them to version control. Add this directory to your <code>.gitignore</code> file.</p>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Configuration File</h3>
+                        <p class="text-gray-700 mb-4">The <code class="bg-gray-100 px-2 py-1 rounded">config/camdigikey.php</code> file contains:</p>
+                        
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">&lt;?php
+
+return [
+    'camdigikey' => [
+        'api_url' => env('CAMDIGIKEY_API_URL'),
+        'success_url' => env('CAMDIGIKEY_SUCCESS_APP_URL'),
+    ],
+];</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Basic Usage -->
+                    <section id="basic-usage" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Basic Usage</h2>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Using the Facade</h3>
+                        <p class="text-gray-700 mb-4">The package provides a convenient facade for all operations:</p>
+                        
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">use PutheaKhem\LaravelCamdigiKey\Facades\CamDigiKey;
+
+// Get login token
+$loginToken = CamDigiKey::getLoginToken();
+
+// The response structure:
+// [
+//     'success' => true,
+//     'data' => [
+//         'token' => 'your-login-token',
+//         'expires_at' => '2024-01-01T00:00:00Z'
+//     ]
+// ]</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Complete Authentication Flow</h3>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">// Step 1: Get login token and redirect user
+$loginToken = CamDigiKey::getLoginToken();
+$loginUrl = "https://camdigikey.serveo.net/login?token=" . $loginToken['data']['token'];
+return redirect($loginUrl);
+
+// Step 2: Handle callback (user returns with auth token)
+Route::get('/callback', function (Request $request) {
+    $authToken = $request->query('token');
+    
+    // Exchange for access token
+    $response = CamDigiKey::getUserAccessToken($authToken);
+    $accessToken = $response['data']['access_token'];
+    
+    // Validate the token
+    $validation = CamDigiKey::validateJwt($accessToken);
+    
+    if ($validation['valid']) {
+        // Token is valid, create user session
+        session(['camdigikey_token' => $accessToken]);
+        return redirect('/dashboard');
+    }
+    
+    return redirect('/login')->with('error', 'Authentication failed');
+});</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Authentication -->
+                    <section id="authentication" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Authentication</h2>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Get Login Token</h3>
+                        <p class="text-gray-700 mb-4">Start the authentication flow by getting a login token:</p>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$token = CamDigiKey::getLoginToken();
+
+// Returns:
+// [
+//     'success' => true,
+//     'data' => [
+//         'token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+//         'expires_at' => '2024-01-01T12:00:00Z'
+//     ]
+// ]</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Get User Access Token</h3>
+                        <p class="text-gray-700 mb-4">Exchange the authorization token for an access token:</p>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$authToken = $request->query('token'); // From callback
+$response = CamDigiKey::getUserAccessToken($authToken);
+
+// Returns:
+// [
+//     'success' => true,
+//     'data' => [
+//         'access_token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+//         'refresh_token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+//         'expires_in' => 3600,
+//         'token_type' => 'Bearer'
+//     ]
+// ]</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Validate JWT Token</h3>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$accessToken = session('camdigikey_token');
+$validation = CamDigiKey::validateJwt($accessToken);
+
+// Returns:
+// [
+//     'valid' => true,
+//     'data' => [
+//         'user_id' => '123456789',
+//         'exp' => 1735689600,
+//         'iat' => 1735686000
+//     ]
+// ]</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Refresh Access Token</h3>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$oldToken = session('camdigikey_token');
+$response = CamDigiKey::refreshAccessToken($oldToken);
+$newToken = $response['data']['access_token'];
+
+// Update session
+session(['camdigikey_token' => $newToken]);</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Logout</h3>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$accessToken = session('camdigikey_token');
+CamDigiKey::logoutAccessToken($accessToken);
+
+// Clear session
+session()->forget('camdigikey_token');</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- User Management -->
+                    <section id="user-management" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">User Management</h2>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Lookup User Profile</h3>
+                        <p class="text-gray-700 mb-4">Retrieve detailed user information using personal code:</p>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$accessToken = session('camdigikey_token');
+$personalCode = '1234567890123'; // User's personal code
+$profile = CamDigiKey::lookupUserProfile($accessToken, $personalCode);
+
+// Returns:
+// [
+//     'success' => true,
+//     'data' => [
+//         'personal_code' => '1234567890123',
+//         'name' => 'John Doe',
+//         'name_khmer' => 'ចន ដូវ',
+//         'date_of_birth' => '1990-01-01',
+//         'gender' => 'M',
+//         'nationality' => 'Cambodian',
+//         'address' => [...],
+//         'contact' => [...]
+//     ]
+// ]</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Get User Face (Biometric)</h3>
+                        <p class="text-gray-700 mb-4">Retrieve user's facial biometric data:</p>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$accessToken = session('camdigikey_token');
+$faceData = CamDigiKey::getUserFace($accessToken);
+
+// Returns:
+// [
+//     'success' => true,
+//     'data' => [
+//         'image' => 'base64_encoded_image_data',
+//         'format' => 'jpeg',
+//         'timestamp' => '2024-01-01T12:00:00Z'
+//     ]
+// ]
+
+// Display the image
+$imageData = base64_decode($faceData['data']['image']);
+header('Content-Type: image/jpeg');
+echo $imageData;</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Verify Account Token</h3>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$accountToken = $request->input('account_token');
+$verification = CamDigiKey::verifyAccountToken($accountToken);
+
+if ($verification['verified']) {
+    // Account is verified
+    $userId = $verification['data']['user_id'];
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Organization -->
+                    <section id="organization" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Organization Support</h2>
+                        
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Get Organization Access Token</h3>
+                        <p class="text-gray-700 mb-4">For organizational accounts:</p>
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">$response = CamDigiKey::getOrganizationAccessToken();
+$orgToken = $response['data']['access_token'];
+
+// Returns:
+// [
+//     'success' => true,
+//     'data' => [
+//         'access_token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+//         'organization_id' => 'ORG123456',
+//         'expires_in' => 7200,
+//         'token_type' => 'Bearer'
+//     ]
+// ]</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- API Reference -->
+                    <section id="api-reference" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">API Reference</h2>
+                        <p class="text-gray-600 mb-8">Complete list of available methods with their signatures and descriptions.</p>
+                        
+                        <div class="space-y-4">
+                            <!-- Method 1 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">getLoginToken()</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Retrieves a login token to initiate the authentication flow.</p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                                        <div class="bg-gray-50 px-3 py-2 rounded">
+                                            <span class="font-semibold text-gray-700">Returns:</span>
+                                            <code class="text-blue-600 ml-1">array</code>
+                                        </div>
+                                        <div class="bg-red-50 px-3 py-2 rounded">
+                                            <span class="font-semibold text-gray-700">Throws:</span>
+                                            <code class="text-red-600 ml-1">RuntimeException</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Method 2 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">getUserAccessToken(string $authToken)</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Exchanges an authorization token for an access token.</p>
+                                    <div class="mb-3">
+                                        <span class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Parameters</span>
+                                        <div class="mt-2 space-y-2">
+                                            <div class="flex items-start bg-gray-50 px-3 py-2 rounded">
+                                                <code class="text-purple-600 font-semibold">$authToken</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <code class="text-blue-600">string</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <span class="text-gray-600 text-xs">Authorization token from callback</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                                        <div class="bg-gray-50 px-3 py-2 rounded">
+                                            <span class="font-semibold text-gray-700">Returns:</span>
+                                            <code class="text-blue-600 ml-1">array</code>
+                                        </div>
+                                        <div class="bg-red-50 px-3 py-2 rounded">
+                                            <span class="font-semibold text-gray-700">Throws:</span>
+                                            <code class="text-red-600 ml-1">RuntimeException</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Method 3 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">validateJwt(string $token)</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Validates a JWT access token.</p>
+                                    <div class="mb-3">
+                                        <span class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Parameters</span>
+                                        <div class="mt-2 space-y-2">
+                                            <div class="flex items-start bg-gray-50 px-3 py-2 rounded">
+                                                <code class="text-purple-600 font-semibold">$token</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <code class="text-blue-600">string</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <span class="text-gray-600 text-xs">JWT token to validate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 px-3 py-2 rounded text-sm">
+                                        <span class="font-semibold text-gray-700">Returns:</span>
+                                        <code class="text-blue-600 ml-1">array</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Method 4 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">refreshAccessToken(string $accessToken)</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Refreshes an expired or expiring access token.</p>
+                                    <div class="mb-3">
+                                        <span class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Parameters</span>
+                                        <div class="mt-2 space-y-2">
+                                            <div class="flex items-start bg-gray-50 px-3 py-2 rounded">
+                                                <code class="text-purple-600 font-semibold">$accessToken</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <code class="text-blue-600">string</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <span class="text-gray-600 text-xs">Current access token</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 px-3 py-2 rounded text-sm">
+                                        <span class="font-semibold text-gray-700">Returns:</span>
+                                        <code class="text-blue-600 ml-1">array</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Method 5 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">logoutAccessToken(string $accessToken)</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Invalidates an access token (logout).</p>
+                                    <div class="mb-3">
+                                        <span class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Parameters</span>
+                                        <div class="mt-2 space-y-2">
+                                            <div class="flex items-start bg-gray-50 px-3 py-2 rounded">
+                                                <code class="text-purple-600 font-semibold">$accessToken</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <code class="text-blue-600">string</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <span class="text-gray-600 text-xs">Access token to invalidate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 px-3 py-2 rounded text-sm">
+                                        <span class="font-semibold text-gray-700">Returns:</span>
+                                        <code class="text-blue-600 ml-1">array</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Method 6 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">lookupUserProfile(string $accessToken, string $personalCode)</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Retrieves detailed user profile information.</p>
+                                    <div class="mb-3">
+                                        <span class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Parameters</span>
+                                        <div class="mt-2 space-y-2">
+                                            <div class="flex items-start bg-gray-50 px-3 py-2 rounded">
+                                                <code class="text-purple-600 font-semibold">$accessToken</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <code class="text-blue-600">string</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <span class="text-gray-600 text-xs">Valid access token</span>
+                                            </div>
+                                            <div class="flex items-start bg-gray-50 px-3 py-2 rounded">
+                                                <code class="text-purple-600 font-semibold">$personalCode</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <code class="text-blue-600">string</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <span class="text-gray-600 text-xs">User's personal identification code</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 px-3 py-2 rounded text-sm">
+                                        <span class="font-semibold text-gray-700">Returns:</span>
+                                        <code class="text-blue-600 ml-1">array</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Method 7 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">getUserFace(string $token)</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Retrieves user's facial biometric data.</p>
+                                    <div class="mb-3">
+                                        <span class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Parameters</span>
+                                        <div class="mt-2 space-y-2">
+                                            <div class="flex items-start bg-gray-50 px-3 py-2 rounded">
+                                                <code class="text-purple-600 font-semibold">$token</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <code class="text-blue-600">string</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <span class="text-gray-600 text-xs">Valid access token</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 px-3 py-2 rounded text-sm">
+                                        <span class="font-semibold text-gray-700">Returns:</span>
+                                        <code class="text-blue-600 ml-1">array</code>
+                                        <span class="text-gray-600 text-xs ml-2">(includes base64 encoded image)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Method 8 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">verifyAccountToken(string $accountToken)</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Verifies an account token.</p>
+                                    <div class="mb-3">
+                                        <span class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Parameters</span>
+                                        <div class="mt-2 space-y-2">
+                                            <div class="flex items-start bg-gray-50 px-3 py-2 rounded">
+                                                <code class="text-purple-600 font-semibold">$accountToken</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <code class="text-blue-600">string</code>
+                                                <span class="mx-2 text-gray-400">•</span>
+                                                <span class="text-gray-600 text-xs">Account token to verify</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 px-3 py-2 rounded text-sm">
+                                        <span class="font-semibold text-gray-700">Returns:</span>
+                                        <code class="text-blue-600 ml-1">array</code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Method 9 -->
+                            <div class="bg-white border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="p-5">
+                                    <div class="flex items-start justify-between mb-3">
+                                        <h4 class="text-base font-mono font-bold text-blue-600">getOrganizationAccessToken()</h4>
+                                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Public</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm mb-4">Retrieves an access token for organizational accounts.</p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                                        <div class="bg-gray-50 px-3 py-2 rounded">
+                                            <span class="font-semibold text-gray-700">Returns:</span>
+                                            <code class="text-blue-600 ml-1">array</code>
+                                        </div>
+                                        <div class="bg-red-50 px-3 py-2 rounded">
+                                            <span class="font-semibold text-gray-700">Throws:</span>
+                                            <code class="text-red-600 ml-1">RuntimeException</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Error Handling -->
+                    <section id="error-handling" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Error Handling</h2>
+                        
+                        <p class="text-gray-700 mb-4">All methods may throw a <code class="bg-gray-100 px-2 py-1 rounded">RuntimeException</code> if the Node.js process fails. Always wrap calls in try-catch blocks:</p>
+                        
+                        <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                            <pre><code class="hljs language-php">use RuntimeException;
+
+try {
+    $token = CamDigiKey::getLoginToken();
+    // Process token
+} catch (RuntimeException $e) {
+    Log::error('CamDigiKey error: ' . $e->getMessage());
+    return response()->json([
+        'error' => 'Authentication service unavailable'
+    ], 503);
+}</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Common Errors</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-red-500 bg-red-50 p-4">
+                                <h4 class="font-semibold text-red-900">Node.js not found</h4>
+                                <p class="text-red-800 text-sm">Ensure Node.js is installed and available in your system PATH.</p>
+                            </div>
+                            
+                            <div class="border-l-4 border-red-500 bg-red-50 p-4">
+                                <h4 class="font-semibold text-red-900">Invalid credentials</h4>
+                                <p class="text-red-800 text-sm">Check your <code>.env</code> configuration values.</p>
+                            </div>
+                            
+                            <div class="border-l-4 border-red-500 bg-red-50 p-4">
+                                <h4 class="font-semibold text-red-900">Keystore file not found</h4>
+                                <p class="text-red-800 text-sm">Ensure .p12 files are placed in the correct directory with proper permissions.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Security -->
+                    <section id="security" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Security Best Practices</h2>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-green-50 border-l-4 border-green-600 p-4">
+                                <h4 class="font-semibold text-green-900 mb-2">✅ Store Keystores Securely</h4>
+                                <p class="text-green-800">Keep <code>.p12</code> files in <code>storage/app/camdigi-key/</code> with restricted permissions (600).</p>
+                            </div>
+                            
+                            <div class="bg-green-50 border-l-4 border-green-600 p-4">
+                                <h4 class="font-semibold text-green-900 mb-2">✅ Use Environment Variables</h4>
+                                <p class="text-green-800">Never hardcode credentials in your code. Use <code>.env</code> for all sensitive configuration.</p>
+                            </div>
+                            
+                            <div class="bg-green-50 border-l-4 border-green-600 p-4">
+                                <h4 class="font-semibold text-green-900 mb-2">✅ Validate Tokens</h4>
+                                <p class="text-green-800">Always validate JWT tokens before trusting user data.</p>
+                            </div>
+                            
+                            <div class="bg-green-50 border-l-4 border-green-600 p-4">
+                                <h4 class="font-semibold text-green-900 mb-2">✅ Secure Token Storage</h4>
+                                <p class="text-green-800">Store access tokens in encrypted session storage, not in cookies or local storage.</p>
+                            </div>
+                            
+                            <div class="bg-green-50 border-l-4 border-green-600 p-4">
+                                <h4 class="font-semibold text-green-900 mb-2">✅ Use HTTPS</h4>
+                                <p class="text-green-800">Always use HTTPS in production to protect tokens in transit.</p>
+                            </div>
+                            
+                            <div class="bg-green-50 border-l-4 border-green-600 p-4">
+                                <h4 class="font-semibold text-green-900 mb-2">✅ Implement Token Refresh</h4>
+                                <p class="text-green-800">Refresh tokens before they expire to maintain user sessions securely.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-6 rounded-lg mt-6">
+                            <h4 class="font-semibold text-gray-900 mb-3">Example .gitignore</h4>
+                            <div class="bg-gray-900 rounded-lg p-4">
+                                <pre><code class="hljs language-bash"># CamDigiKey keystores
+storage/app/camdigi-key/*.p12
+storage/app/camdigi-key/*.key
+.env
+.env.backup</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Troubleshooting -->
+                    <section id="troubleshooting" class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Troubleshooting</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">❓ Node.js SDK not found</h4>
+                                <p class="text-gray-700 mb-3"><strong>Solution:</strong></p>
+                                <div class="bg-gray-900 rounded-lg p-4">
+                                    <pre><code class="hljs language-bash">php artisan camdigikey:setup</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">❓ Process timeout errors</h4>
+                                <p class="text-gray-700 mb-2"><strong>Solution:</strong> Increase the timeout in your configuration or check network connectivity to CamDigiKey servers.</p>
+                            </div>
+
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">❓ Invalid certificate errors</h4>
+                                <p class="text-gray-700 mb-2"><strong>Solution:</strong> Verify your keystore files are not corrupted and passwords are correct in <code>.env</code>.</p>
+                            </div>
+
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">❓ Token validation fails</h4>
+                                <p class="text-gray-700 mb-2"><strong>Solution:</strong> Check that your HMAC key matches the one registered with CamDigiKey.</p>
+                            </div>
+
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-gray-900 mb-2">❓ Getting authentication errors</h4>
+                                <p class="text-gray-700 mb-3"><strong>Solution:</strong> Enable debug mode to see detailed error messages:</p>
+                                <div class="bg-gray-900 rounded-lg p-4">
+                                    <pre><code class="hljs language-php">// In your controller
+try {
+    $result = CamDigiKey::getLoginToken();
+} catch (\RuntimeException $e) {
+    dd($e->getMessage()); // Debug the actual error
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 border-l-4 border-blue-600 p-4 mt-6">
+                            <h4 class="font-semibold text-blue-900 mb-2">📧 Need Help?</h4>
+                            <p class="text-blue-800">If you discover any security issues, please email <a href="mailto:puthea.khem@gmail.com" class="underline">puthea.khem@gmail.com</a> instead of using the issue tracker.</p>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400 mb-4">&copy; 2024 Laravel CamDigiKey. Licensed under MIT License.</p>
+                <p class="text-gray-400">Built with ❤️ by <a href="mailto:puthea.khem@gmail.com" class="text-blue-400 hover:text-blue-300">Puthea Khem</a></p>
+                <div class="mt-4">
+                    <a href="https://www.buymeacoffee.com/iamputhea" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300">Buy me a coffee ☕</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+        // Update active sidebar link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

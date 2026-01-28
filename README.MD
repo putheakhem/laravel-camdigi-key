@@ -2,7 +2,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/putheakhem/laravel-camdigi-key.svg?style=flat-square)](https://packagist.org/packages/putheakhem/laravel-camdigi-key)
 
 # Laravel CamDigiKey Package
-
+> ⚠️ **DISCLAIMER**: This is an **unofficial community package** and is **not affiliated with, endorsed by, or supported by the official CamDigiKey Platform** or the Cambodian government. This package is maintained independently. For official support, please contact the official CamDigiKey Platform directly.
 A Laravel wrapper for the [CamDigiKey Node.js Client](https://github.com/Techo-Startup-Center/camdigikey-client-library-node).
 
 This package integrates Cambodia’s national digital identity authentication (CamDigiKey) system with your Laravel application via Node.js.

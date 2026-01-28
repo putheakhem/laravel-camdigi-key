@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Laravel CamDigiKey - Cambodia Digital Identity Authentication Package</title>
+    <meta name="title" content="Laravel CamDigiKey - Cambodia Digital Identity Authentication Package">
+    <meta name="description" content="Integrate Cambodia's national digital identity authentication (CamDigiKey) system with your Laravel application. Secure authentication, user verification, and OAuth2 integration for Cambodian digital identity.">
+    <meta name="keywords" content="camdigikey, cambodia digital identity, laravel authentication, oauth2, cambodia id, digital signature, laravel package, cambodia, national id, user verification">
+    <meta name="author" content="Puthea Khem">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://camdigikey-docs.netlify.app/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://camdigikey-docs.netlify.app/">
+    <meta property="og:title" content="Laravel CamDigiKey - Cambodia Digital Identity Authentication Package">
+    <meta property="og:description" content="Integrate Cambodia's national digital identity authentication system with your Laravel application. Secure, reliable, and easy to use.">
+    <meta property="og:image" content="https://camdigikey-docs.netlify.app/og-image.png">
+    <meta property="og:site_name" content="Laravel CamDigiKey">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://camdigikey-docs.netlify.app/">
+    <meta name="twitter:title" content="Laravel CamDigiKey - Cambodia Digital Identity Authentication">
+    <meta name="twitter:description" content="Integrate Cambodia's national digital identity authentication system with your Laravel application.">
+    <meta name="twitter:image" content="https://camdigikey-docs.netlify.app/og-image.png">
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#1e40af">
+    <meta name="language" content="English">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            position: relative;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        pre code.hljs {
+            background: transparent;
+            padding: 0;
+        }
+
+        pre {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+        }
+
+        pre::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        pre::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        pre::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 4px;
+        }
+
+        .hero-pattern {
+            background-color: #1e293b;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">Laravel CamDigiKey</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Features</a>
+                    <a href="#installation" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Installation</a>
+                    <a href="documentation.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Documentation</a>
+                    <a href="https://github.com/putheakhem/laravel-camdigi-key" target="_blank" rel="noopener" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="mb-8">
+                    <span class="inline-block px-4 py-2 bg-blue-600/10 text-blue-400 rounded-full text-sm font-semibold mb-4">
+                        🇰🇭 Cambodia Digital Identity Authentication
+                    </span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                    Laravel CamDigiKey
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Seamlessly integrate Cambodia's national digital identity authentication system with your Laravel application. Secure, reliable, and developer-friendly.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#installation" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg">
+                        Get Started
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                    <a href="documentation.html" class="inline-flex items-center px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg">
+                        View Documentation
+                    </a>
+                </div>
+                
+                <!-- Disclaimer -->
+                <div class="mt-12 max-w-3xl mx-auto">
+                    <div class="bg-white border border-orange-200 rounded-lg p-3 shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <p class="text-sm text-gray-700">
+                                <span class="font-medium text-gray-900">Unofficial Package:</span> Not affiliated with the official CamDigiKey Platform. 
+                                <button onclick="toggleDisclaimer()" class="text-blue-600 hover:text-blue-700 underline ml-1">Learn more</button>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Hidden detailed disclaimer -->
+                    <div id="detailed-disclaimer" class="hidden mt-2 bg-orange-50 border border-orange-200 rounded-lg p-4 text-sm text-orange-800">
+                        This is an unofficial community package maintained independently. For official support and information, please contact the official CamDigiKey Platform directly.
+                    </div>
+                </div>
+
+                <!-- Installation Command -->
+                <div class="mt-8 max-w-2xl mx-auto">
+                    <div class="bg-gray-900 rounded-lg p-4 text-left">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-gray-400 text-sm">Quick Install</span>
+                            <button onclick="copyToClipboard('composer require putheakhem/laravel-camdigi-key')" class="text-gray-400 hover:text-white transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <pre><code class="text-green-400">composer require putheakhem/laravel-camdigi-key</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stand with Cambodia -->
+    <section class="bg-gradient-to-r from-blue-900 to-blue-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">🇰🇭 Stand with Cambodia • កម្ពុជា</h2>
+                <p class="text-xl text-blue-100 mb-2">🕊️ Cambodia Needs Peace 🕊️</p>
+                <p class="text-blue-200 max-w-3xl mx-auto">
+                    With heavy hearts, we stand with our brave soldiers defending Cambodia's land and dignity.  
+                    We seek no conflict—only peace, justice, and respect for our sovereignty.
+                </p>
+                <p class="text-blue-100 mt-4 font-semibold">🙏 កម្ពុជាត្រូវការសន្តិភាព • Together to protect Cambodia's sovereignty.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+                <p class="text-xl text-gray-600">Everything you need for secure digital identity authentication</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Secure Authentication</h3>
+                    <p class="text-gray-600">OAuth2-based authentication with digital certificates and HMAC security for maximum protection.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Easy Integration</h3>
+                    <p class="text-gray-600">Simple facade-based API that integrates seamlessly with your existing Laravel application.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">User Verification</h3>
+                    <p class="text-gray-600">Access user profiles, verify identity with personal codes, and retrieve biometric data securely.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Token Management</h3>
+                    <p class="text-gray-600">Complete token lifecycle management including refresh, validation, and logout capabilities.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Organization Support</h3>
+                    <p class="text-gray-600">Full support for organizational accounts with dedicated access token management.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Comprehensive Documentation</h3>
+                    <p class="text-gray-600">Detailed documentation with code examples, best practices, and troubleshooting guides.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center">Quick Start</h2>
+            
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                        <div class="ml-4 flex-grow">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Install via Composer</h3>
+                            <div class="bg-gray-900 rounded-lg p-4">
+                                <pre><code class="text-green-400">composer require putheakhem/laravel-camdigi-key</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                        <div class="ml-4 flex-grow">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Publish Configuration</h3>
+                            <div class="bg-gray-900 rounded-lg p-4">
+                                <pre><code class="text-green-400">php artisan vendor:publish --tag=config</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                        <div class="ml-4 flex-grow">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Run Setup Command</h3>
+                            <div class="bg-gray-900 rounded-lg p-4">
+                                <pre><code class="text-green-400">php artisan camdigikey:setup</code></pre>
+                            </div>
+                            <p class="text-gray-600 mt-2 text-sm">This will automatically clone the CamDigiKey Node.js SDK into the vendor directory.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                        <div class="ml-4 flex-grow">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Configure Environment</h3>
+                            <p class="text-gray-600 mb-3">Add your CamDigiKey credentials to <code class="bg-gray-100 px-2 py-1 rounded">.env</code></p>
+                            <div class="bg-gray-900 rounded-lg p-4">
+                                <pre><code class="text-green-400">CAMDIGIKEY_CLIENT_ID=your_client_id
+CAMDIGIKEY_HMAC_KEY=your_hmac_key
+CAMDIGIKEY_AES_SECRET_KEY=your_aes_secret
+CAMDIGIKEY_AES_IV_PARAMS=your_iv
+CAMDIGIKEY_CLIENT_DOMAIN=https://your-app.test
+CAMDIGIKEY_SERVER_BASED_URL=https://camdigikey.serveo.net
+CAMDIGIKEY_REDIRECT_URI=https://your-app.test/callback</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a href="documentation.html" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">
+                    Continue to Full Documentation
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usage Example -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center">Basic Usage</h2>
+            
+            <div class="bg-gray-900 rounded-xl p-6">
+                <div class="mb-4">
+                    <span class="text-gray-400 text-sm">Example: User Authentication</span>
+                </div>
+                <pre><code class="hljs language-php">use PutheaKhem\LaravelCamdigiKey\Facades\CamDigiKey;
+
+// Get login token
+$loginToken = CamDigiKey::getLoginToken();
+
+// Exchange auth token for access token
+$accessToken = CamDigiKey::getUserAccessToken($authToken);
+
+// Validate JWT token
+$validToken = CamDigiKey::validateJwt($token);
+
+// Get user profile
+$profile = CamDigiKey::lookupUserProfile($accessToken, $personalCode);
+
+// Refresh access token
+$newToken = CamDigiKey::refreshAccessToken($accessToken);
+
+// Logout
+CamDigiKey::logoutAccessToken($accessToken);</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-600 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
+            <p class="text-xl text-blue-100 mb-8">Start integrating CamDigiKey authentication into your Laravel application today.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="documentation.html" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    Read Documentation
+                </a>
+                <a href="https://github.com/putheakhem/laravel-camdigi-key" target="_blank" rel="noopener" class="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Laravel CamDigiKey</h3>
+                    <p class="text-gray-400">Cambodia's digital identity authentication for Laravel applications.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="documentation.html" class="text-gray-400 hover:text-white transition">Documentation</a></li>
+                        <li><a href="https://github.com/putheakhem/laravel-camdigi-key" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition">GitHub</a></li>
+                        <li><a href="https://packagist.org/packages/putheakhem/laravel-camdigi-key" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition">Packagist</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <p class="text-gray-400 mb-2">Built with ❤️ by Puthea Khem</p>
+                    <a href="https://www.buymeacoffee.com/iamputhea" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition">Buy me a coffee ☕</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 Laravel CamDigiKey. Licensed under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+
+        function toggleDisclaimer() {
+            const disclaimer = document.getElementById('detailed-disclaimer');
+            if (disclaimer.classList.contains('hidden')) {
+                disclaimer.classList.remove('hidden');
+            } else {
+                disclaimer.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
