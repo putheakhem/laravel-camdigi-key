@@ -9,6 +9,20 @@ This package integrates Cambodia’s national digital identity authentication (C
 
 ---
 
+<div align="center">
+
+## 🇰🇭 Stand with Cambodia • កម្ពុជា
+
+### 🕊️ Cambodia Needs Peace 🕊️
+
+With heavy hearts, we stand with our brave soldiers defending Cambodia’s land and dignity.  
+We seek no conflict—only peace, justice, and respect for our sovereignty.
+
+**🙏 កម្ពុជាត្រូវការសន្តិភាព • Together to protect Cambodia’s sovereignty.**
+</div>
+
+---
+
 ## 📦 Installation
 
 You can install the package via [Packagist](https://packagist.org/packages/putheakhem/laravel-camdigi-key):
