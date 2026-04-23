@@ -1,5 +1,11 @@
 const { CamDigiKeyClient } = require('../node-lib');
-const client = new CamDigiKeyClient({});
-const idToken = process.argv[2];
-const info = client.getUserInfo(idToken);
-console.log(JSON.stringify(info));
+
+(async () => {
+    try {
+        const accessToken = process.argv[2];
+        console.log(JSON.stringify(await CamDigiKeyClient.default.validateJwt(accessToken)));
+    } catch (e) {
+        console.error(e.message);
+        process.exit(1);
+    }
+})();

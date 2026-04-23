@@ -7,6 +7,8 @@ A Laravel wrapper for the [CamDigiKey Node.js Client](https://github.com/Techo-S
 
 This package integrates Cambodia’s national digital identity authentication (CamDigiKey) system with your Laravel application via Node.js.
 
+This package is compatible with `camdigikey-client` **v3.x** (tested with `v3.0.2`).
+
 ---
 
 <div align="center">
@@ -47,6 +49,8 @@ Run `php artisan camdigikey:setup`. The package also automatically clones the No
 ```
 vendor/putheakhem/laravel-camdigi-key/node-lib/
 ```
+
+For package maintainers using a local symlinked package during development, the SDK resolves from the local package directory.
 
 ---
 
@@ -92,7 +96,7 @@ $access = CamDigiKey::getUserAccessToken($authToken);
 All supported methods:
 - `getLoginToken()`
 - `getUserAccessToken($authToken)`
-- `refreshUserAccessToken($accessToken)`
+- `refreshAccessToken($accessToken)`
 - `logoutAccessToken($accessToken)`
 - `validateJwt($accessToken)`
 - `lookupUserProfile($accessToken, $personalCode)`

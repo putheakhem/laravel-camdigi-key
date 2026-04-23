@@ -51,13 +51,13 @@ final class CamDigiKey
 
     public function verifyAccountToken(string $accountToken): array
     {
-        return $this->runNode('verify-account-token', [$accountToken]);
+        return $this->runNode('verify-account-token.js', [$accountToken]);
     }
 
     private function runNode(string $script, array $args = []): array
     {
-        $cmd = array_merge(['node', base_path("vendor/putheakhem/laravel-camdigi-key/scripts/{$script}")], $args);
-        $process = new Process($cmd);
+        $cmd = array_merge(['node', $this->scriptPath($script)], $args);
+        $process = new Process($cmd, base_path(), $this->nodeEnvironment());
         $process->run();
 
         if (! $process->isSuccessful()) {
@@ -65,5 +65,51 @@ final class CamDigiKey
         }
 
         return json_decode($process->getOutput(), true);
+    }
+
+    private function scriptPath(string $script): string
+    {
+        return $this->packagePath("scripts/{$script}");
+    }
+
+    private function packagePath(string $path = ''): string
+    {
+        $packageRootPath = dirname(__DIR__);
+
+        if ($path === '') {
+            return $packageRootPath;
+        }
+
+        return $packageRootPath.DIRECTORY_SEPARATOR.$path;
+    }
+
+    private function nodeEnvironment(): array
+    {
+        return [
+            'CAMDIGIKEY_CLIENT_KEYSTORE_FILE' => $this->resolvePathFromBasePath(env('CAMDIGIKEY_CLIENT_KEYSTORE_FILE')),
+            'CAMDIGIKEY_CLIENT_TRUST_STORE_FILE' => $this->resolvePathFromBasePath(env('CAMDIGIKEY_CLIENT_TRUST_STORE_FILE')),
+        ];
+    }
+
+    private function resolvePathFromBasePath(?string $path): ?string
+    {
+        if ($path === null || $path === '') {
+            return $path;
+        }
+
+        if ($this->isAbsolutePath($path)) {
+            return $path;
+        }
+
+        return base_path($path);
+    }
+
+    private function isAbsolutePath(string $path): bool
+    {
+        if (str_starts_with($path, DIRECTORY_SEPARATOR)) {
+            return true;
+        }
+
+        return (bool) preg_match('/^[A-Za-z]:[\\\\\\/]/', $path);
     }
 }

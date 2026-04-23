@@ -15,7 +15,7 @@ final class SetupCamDigiKey extends Command
 
     public function handle()
     {
-        $path = base_path('vendor/putheakhem/laravel-camdigi-key/node-lib');
+        $path = dirname(__DIR__, 2).'/node-lib';
         if (is_dir($path)) {
             $this->info('✅ CamDigiKey Node.js library already exists.');
 

@@ -10,6 +10,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "camdigikey-client": "github:techo-startup-center/camdigikey-client-library-node"
+    "camdigikey-client": "https://github.com/Techo-Startup-Center/camdigikey-client-library-node#v3.0.2"
   }
 }

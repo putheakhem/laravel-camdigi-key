@@ -2,7 +2,7 @@ const { CamDigiKeyClient } = require('../node-lib');
 (async () => {
     try {
         const token = process.argv[2];
-        console.log(JSON.stringify(await CamDigiKeyClient.getUserFace(token)));
+        console.log(JSON.stringify(await CamDigiKeyClient.default.getUserFace(token)));
     } catch (e) {
         console.error(e.message);
         process.exit(1);

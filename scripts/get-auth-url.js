@@ -1,16 +1,19 @@
 const { CamDigiKeyClient } = require('../node-lib');
-const client = new CamDigiKeyClient({
-    clientId: process.env.CAMDIGIKEY_CLIENT_ID,
-    hmacKey: process.env.CAMDIGIKEY_HMAC_KEY,
-    aesSecretKey: process.env.CAMDIGIKEY_AES_SECRET_KEY,
-    aesIvParams: process.env.CAMDIGIKEY_AES_IV_PARAMS,
-    clientDomain: process.env.CAMDIGIKEY_CLIENT_DOMAIN,
-    serverBaseUrl: process.env.CAMDIGIKEY_SERVER_BASED_URL,
-    clientKeyStoreFile: process.env.CAMDIGIKEY_CLIENT_KEYSTORE_FILE,
-    clientKeyStorePassword: process.env.CAMDIGIKEY_CLIENT_KEYSTORE_FILE_PASSWORD,
-    trustStoreFile: process.env.CAMDIGIKEY_CLIENT_TRUST_STORE_FILE,
-    trustStorePassword: process.env.CAMDIGIKEY_CLIENT_TRUST_STORE_FILE_PASSWORD,
-    redirectUri: process.env.CAMDIGIKEY_REDIRECT_URI,
-    scope: process.env.CAMDIGIKEY_SCOPE || 'pid name email phone',
-});
-console.log(client.getAuthorizationUrl());
+
+(async () => {
+    try {
+        const response = await CamDigiKeyClient.default.getLoginToken();
+        const loginUrl = response?.data?.loginUrl;
+
+        if (loginUrl) {
+            console.log(loginUrl);
+
+            return;
+        }
+
+        console.log(JSON.stringify(response));
+    } catch (e) {
+        console.error(e.message);
+        process.exit(1);
+    }
+})();
