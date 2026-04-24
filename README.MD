@@ -1,14 +1,20 @@
+
+<div align="left">
+    <a href="https://github.com/putheakhem/laravel-camdigi-key">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="docs/img/laravel-camdigi-key.png">
+        <img alt="Logo for Laravel CamDigi Key" src="docs/img/laravel-camdigi-key.png">
+      </picture>
+    </a>
+<h1>Laravel CamDigiKey Package</h1>
+
 [![Latest Stable Version](https://img.shields.io/packagist/v/putheakhem/laravel-camdigi-key.svg?style=flat-square)](https://packagist.org/packages/putheakhem/laravel-camdigi-key)
 [![Total Downloads](https://img.shields.io/packagist/dt/putheakhem/laravel-camdigi-key.svg?style=flat-square)](https://packagist.org/packages/putheakhem/laravel-camdigi-key)
+</div>
 
-# Laravel CamDigiKey Package
 > ⚠️ **DISCLAIMER**: This is an **unofficial community package** and is **not affiliated with, endorsed by, or supported by the official CamDigiKey Platform** or the Cambodian government. This package is maintained independently. For official support, please contact the official CamDigiKey Platform directly.
 A Laravel wrapper for the [CamDigiKey Node.js Client](https://github.com/Techo-Startup-Center/camdigikey-client-library-node).
-
-This package integrates Cambodia’s national digital identity authentication (CamDigiKey) system with your Laravel application via Node.js.
-
-This package is compatible with `camdigikey-client` **v3.x** (tested with `v3.0.2`).
-
+>
 ---
 
 <div align="center">
@@ -17,7 +23,7 @@ This package is compatible with `camdigikey-client` **v3.x** (tested with `v3.0.
 
 ### 🕊️ Cambodia Needs Peace 🕊️
 
-With heavy hearts, we stand with our brave soldiers defending Cambodia’s land and dignity.  
+With heavy hearts, we stand with our brave soldiers defending Cambodia’s land and dignity.
 We seek no conflict—only peace, justice, and respect for our sovereignty.
 
 **🙏 កម្ពុជាត្រូវការសន្តិភាព • Together to protect Cambodia’s sovereignty.**
