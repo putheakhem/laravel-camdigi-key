@@ -10,3 +10,8 @@ it('command exists in source code', function () {
 
     expect(file_exists($commandFile))->toBeTrue();
 });
+
+it('registers the setup command in artisan', function () {
+    $this->artisan('camdigikey:setup', ['--help' => true])
+        ->assertSuccessful();
+});

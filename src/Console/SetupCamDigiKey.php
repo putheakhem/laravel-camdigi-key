@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PutheaKhem\LaravelCamDigiKey\Console;
+namespace PutheaKhem\LaravelCamdigiKey\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
@@ -13,7 +13,7 @@ final class SetupCamDigiKey extends Command
 
     protected $description = 'Automatically clone CamDigiKey Node.js library';
 
-    public function handle()
+    public function handle(): int
     {
         $path = dirname(__DIR__, 2).'/node-lib';
         if (is_dir($path)) {

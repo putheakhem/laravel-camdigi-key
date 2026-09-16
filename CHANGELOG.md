@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-09-16
+
+### Added
+- Support for Laravel 13 (`illuminate/support: ^10.0|^11.0|^12.0|^13.0`)
+- Updated `orchestra/testbench` dev requirement (`^9.0|^10.0|^11.0`)
+- Safe execution checks for post-install and post-update scripts
+
+### Fixed
+- Fixed namespace casing for `SetupCamDigiKey` command to strictly comply with PSR-4
+- Added explicit return type declarations for service provider, facade, and console command methods
+
 ## [1.0.0] - 2024-01-28
 
 ### Added
@@ -38,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Facade implementation
 - Service provider setup
 
-[Unreleased]: https://github.com/PutheaKhem/LaravelCamdigiKey/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/PutheaKhem/LaravelCamdigiKey/compare/2.1.0...HEAD
+[2.1.0]: https://github.com/PutheaKhem/LaravelCamdigiKey/compare/2.0.0...2.1.0
 [1.0.0]: https://github.com/PutheaKhem/LaravelCamdigiKey/releases/tag/v1.0.0
 [0.1.0]: https://github.com/PutheaKhem/LaravelCamdigiKey/releases/tag/v0.1.0

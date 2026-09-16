@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace PutheaKhem\LaravelCamdigiKey;
 
 use Illuminate\Support\ServiceProvider;
-use PutheaKhem\LaravelCamDigiKey\Console\SetupCamDigiKey;
+use PutheaKhem\LaravelCamdigiKey\Console\SetupCamDigiKey;
 
 final class CamDigiKeyServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/camdigikey.php', 'camdigikey');
 
@@ -18,7 +18,7 @@ final class CamDigiKeyServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
